@@ -13,8 +13,8 @@
 
   <name>File Chooser Sentinel</name>
   <keywords>android,file</keywords>
-  <repo>https://github.com/MobileChromeApps/mobile-chrome-apps.git</repo>
-  <issue>https://github.com/MobileChromeApps/mobile-chrome-apps/issues</issue>
+  <repo>https://github.com/fenix20113/Cordova-file-chooser.git</repo>
+  <issue>https://github.com/fenix20113/Cordova-file-chooser</issue>
 
   <js-module src="FileChooser.js" name="FileChooser">
       <clobbers target="window.FileChooser" />
