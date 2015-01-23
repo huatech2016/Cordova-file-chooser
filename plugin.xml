@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copyright (c) 2013 The Chromium Authors. All rights reserved.
+  Use of this source code is governed by a BSD-style license that can be
+  found in the LICENSE file.
+-->
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+    id="com.sentinel.filechooser"
+    version="1.0.2">
+  <engines>
+    <engine name="cordova" version=">=3.0.0" />
+  </engines>
+
+  <name>File Chooser Sentinel</name>
+  <keywords>android,file</keywords>
+  <repo>https://github.com/MobileChromeApps/mobile-chrome-apps.git</repo>
+  <issue>https://github.com/MobileChromeApps/mobile-chrome-apps/issues</issue>
+
+  <js-module src="FileChooser.js" name="FileChooser">
+      <clobbers target="window.FileChooser" />
+  </js-module>
+
+  <platform name="android">
+    <source-file src="src/FileChooser.java" target-dir="src/com/sentinel/filechooser" />
+    <source-file src="src/FileUtils.java" target-dir="src/com/sentinel/filechooser" />
+
+    <config-file target="res/xml/config.xml" parent="/widget">
+      <feature name="FileChooser">
+        <param name="android-package" value="com.sentinel.filechooser.FileChooser"/>
+      </feature>
+    </config-file>
+  </platform>
+</plugin>
