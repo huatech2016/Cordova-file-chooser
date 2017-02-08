@@ -31,12 +31,12 @@ public class FileChooser extends CordovaPlugin {
 		return false;
 	}
 
-	public void chooseFile(CallbackContext callbackContext) {
-
-		// type and title should be configurable
-
+	public void chooseFile(CallbackContext callbackContext) {·		
+// type and title should be configurable
+//("application/*")含义是包含但不仅限于常见的文档。包含office 文档，pdf 文档 ，不包含图片，基本够用。暂未找到更好的解决办法 	
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("*/*");
+		intent.setType("application/*");
+		
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
 		intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
 
