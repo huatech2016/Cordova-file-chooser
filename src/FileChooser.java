@@ -61,8 +61,9 @@ public class FileChooser extends CordovaPlugin {
 				if (uri != null) {
 					Log.i(TAG, ""+uri.toString());
 					String path = FileUtils.getPath(cordova.getActivity(), uri);
+					String [] paths = {path};
 					Log.i(TAG, ""+path);
-					callback.success(path);
+					callback.success(paths);
 				} else {
 					callback.error("File uri was null");
 				}
