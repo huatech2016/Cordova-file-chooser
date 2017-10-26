@@ -5,6 +5,8 @@ import org.apache.cordova.CordovaArgs;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
 import com.sentinel.filechooser.FileUtils;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.app.Activity;
@@ -31,12 +33,12 @@ public class FileChooser extends CordovaPlugin {
 		return false;
 	}
 
-	public void chooseFile(CallbackContext callbackContext) {·		
+	public void chooseFile(CallbackContext callbackContext) {
 // type and title should be configurable
-//("application/*")含义是包含但不仅限于常见的文档。包含office 文档，pdf 文档 ，不包含图片，基本够用。暂未找到更好的解决办法 	
+//("application/*")含义是包含但不仅限于常见的文档。包含office 文档，pdf 文档 ，不包含图片，基本够用。暂未找到更好的解决办法
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("application/*");
-		
+
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
 		intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
 
@@ -61,9 +63,10 @@ public class FileChooser extends CordovaPlugin {
 				if (uri != null) {
 					Log.i(TAG, ""+uri.toString());
 					String path = FileUtils.getPath(cordova.getActivity(), uri);
-					String [] paths = {path};
+					JSONArray jsonArray = new JSONArray();
+					jsonArray.put(path);
 					Log.i(TAG, ""+path);
-					callback.success(paths);
+					callback.success(jsonArray);
 				} else {
 					callback.error("File uri was null");
 				}
